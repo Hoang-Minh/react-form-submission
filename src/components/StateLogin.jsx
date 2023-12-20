@@ -1,11 +1,24 @@
 import { useRef } from "react";
 export default function StateLogin() {
+
+  const [emailIsValid, setEmailIsValid] = useState(false);
+
   const emailRef = useRef();
   const passwordRef = useRef();
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(emailRef.current.value, passwordRef.current.value);
+    const enteredEmail = emailRef.current.value;
+
+    const emailIsValid = enteredEmail.includes("@");
+
+    if(!emailIsValid) {
+      setEmailIsValid(true);
+      return;
+    }
+    setEmailIsValid(false);
+    
+    console.log("sending http request...");
   };  
 
   return (

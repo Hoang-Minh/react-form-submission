@@ -1,4 +1,5 @@
 export default function Signup() {
+
   const [passwordAreNotEqual, setPasswordAreNotEqual] = useState(false);
 
   const handleSubmit = (event) => {
@@ -11,7 +12,7 @@ export default function Signup() {
     data.acquisition = acquistionChannel;
     console.log(data);
 
-    if (data.password !== data["confirm-password"]) {
+    if(data.password !== data["confirm-password"]) {
       setPasswordAreNotEqual(true);
       return;
     }
@@ -47,9 +48,7 @@ export default function Signup() {
             name="confirm-password"
             required
           />
-          <div className="control-error">
-            {passwordAreNotEqual && <p>Password must match.</p>}
-          </div>
+          <div className="control-error">{passwordAreNotEqual && <p>Password must match.</p>}</div>
         </div>
       </div>
 
